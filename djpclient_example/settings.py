@@ -1,5 +1,7 @@
 # Django settings for djpclient_example project.
 
+import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -8,6 +10,8 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+SETTINGS_PATH = os.path.dirname(__file__)
 
 # --------------------------------------------------
 # PROFILER SETTINGS
@@ -116,11 +120,15 @@ ROOT_URLCONF = 'djpclient_example.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'djpclient_example.wsgi.application'
 
+TEMPLATE_PATH = os.path.join(SETTINGS_PATH, 'templates')
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    TEMPLATE_PATH,
 )
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
