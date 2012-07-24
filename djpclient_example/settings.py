@@ -34,6 +34,16 @@ DATABASES = {
     }
 }
 
+
+# --------------------------------------------------
+# CACHE SETTINGS
+# --------------------------------------------------
+CACHE_BACKEND = 'file://%s/file_cache' % (SETTINGS_PATH,)
+
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
+
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -112,7 +122,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    
+    # uncomment this line to profile the entie client application (recommended)
 #    'djpclient.middleware.DJPClientMiddleware',
+    
+    # middleware for site-wide caching
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'djpclient_example.urls'
