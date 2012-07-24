@@ -20,7 +20,7 @@ PROFILE_SEND_ASYNC = False
 
 PROFILE_APP_NAME = 'djpclient_example'
 PROFILE_APP_USERNAME = 'demo@djangoperformance.com'
-PROFILE_API_KEY = 'keygoeshere'
+PROFILE_API_KEY = '1411543da5464719ba1171322e605582c9de0c71'
 
 
 DATABASES = {
