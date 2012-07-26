@@ -23,6 +23,7 @@ PROFILE_APP_USERNAME = 'demo@djangoperformance.com'
 PROFILE_API_KEY = '1411543da5464719ba1171322e605582c9de0c71'
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -40,6 +41,7 @@ DATABASES = {
 # --------------------------------------------------
 CACHE_BACKEND = 'file://%s/file_cache' % (SETTINGS_PATH,)
 
+# uncomment this line to use python-memcached for the cache backend
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 
@@ -125,12 +127,12 @@ MIDDLEWARE_CLASSES = (
     
     
     # uncomment this line to profile the entie client application (recommended)
-#    'djpclient.middleware.DJPClientMiddleware',
+    'djpclient.middleware.DJPClientMiddleware',
     
     # middleware for site-wide caching
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+#    'django.middleware.cache.UpdateCacheMiddleware',
+#    'django.middleware.common.CommonMiddleware',
+#    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'djpclient_example.urls'
