@@ -16,11 +16,18 @@ SETTINGS_PATH = os.path.dirname(__file__)
 # --------------------------------------------------
 # PROFILER SETTINGS
 # --------------------------------------------------
-PROFILE_SEND_ASYNC = False
+# note: make sure to have celery running by running:
+# python manage.py celeryd -E --loglevel=info
+DJP_SEND_ASYNC = True
 
-PROFILE_APP_NAME = 'djpclient_example'
-PROFILE_APP_USERNAME = 'demo@djangoperformance.com'
-PROFILE_API_KEY = '1411543da5464719ba1171322e605582c9de0c71'
+# note: celery will display some warnings if you have DEBUG = True; you can ignore these
+
+
+# credentials for djangoperformance.com demo account.
+# demo account username / password = demo / demo
+DJP_APP_NAME = 'djpclient_example'
+DJP_APP_USERNAME = 'demo@djangoperformance.com'
+DJP_API_KEY = '89ea8b5dc16598ec091994d7a53e7abc1d9ead96'
 
 
 
@@ -163,8 +170,24 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'djpclient_example.books',
     
+    
     'djpclient',
+    
+    'kombu.transport.django',
+    'djcelery',
 )
+
+
+# -----------------------------------------------------------
+# CELERY CONFIGURATION
+# -----------------------------------------------------------
+BROKER_BACKEND = 'django'
+BROKER_HOST = DATABASES['default']['HOST']
+BROKER_USER = DATABASES['default']['USER']
+BROKER_PASSWORD = DATABASES['default']['PASSWORD']
+
+import djcelery
+djcelery.setup_loader()
 
 
 
