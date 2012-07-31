@@ -21,8 +21,8 @@
 		{% for book in object_list %}
 		<tr>
 			<td>{{ book.title }}</td>
-			<td> - </td>
-			<td> - </td>
+			<td>{{ book.authors.all|join:", " }} </td>
+			<td>{{ book.publisher }}</td>
 			<td>{{ book.publication_date }}</td>
 		</tr>
 		{% endfor %}

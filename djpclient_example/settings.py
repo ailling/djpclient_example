@@ -134,7 +134,7 @@ MIDDLEWARE_CLASSES = (
     
     
     # uncomment this line to profile the entie client application (recommended)
-    'djpclient.middleware.DJPClientMiddleware',
+#    'djpclient.middleware.DJPClientMiddleware',
     
     # middleware for site-wide caching
 #    'django.middleware.cache.UpdateCacheMiddleware',
@@ -170,8 +170,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'djpclient_example.books',
     
-    
-    'djpclient',
+    'djpclient_example.djpclient',
     
     'kombu.transport.django',
     'djcelery',
@@ -209,12 +208,22 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'djp_handler': {
+            'level': 'INFO',
+            'class': 'djpclient_example.djpclient.log.DJPHandler',
         }
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+        'djpclient_example.books.views': {
+            'handlers': ['djp_handler'],
+            'level': 'INFO',
+            'propagate': True
+        },
+        
+        'djplogger': {
+            'handlers': ['djp_handler'],
+            'level': 'INFO',
             'propagate': True,
         },
     }
