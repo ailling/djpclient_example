@@ -27,10 +27,10 @@ DJP_SEND_ASYNC = True
 # demo account username / password = demo / demo
 DJP_APP_NAME = 'djpclient_example'
 DJP_APP_USERNAME = 'demo@djangoperformance.com'
-#DJP_API_KEY = '89ea8b5dc16598ec091994d7a53e7abc1d9ead96'
+DJP_API_KEY = '89ea8b5dc16598ec091994d7a53e7abc1d9ead96'
 
 #for debugging
-DJP_API_KEY = '493b0c8936a282ca1ea1eee47a61d1b80ee7090d'
+#DJP_API_KEY = '493b0c8936a282ca1ea1eee47a61d1b80ee7090d'
 
 
 
