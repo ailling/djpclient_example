@@ -16,7 +16,8 @@ SETTINGS_PATH = os.path.dirname(__file__)
 # --------------------------------------------------
 # PROFILER SETTINGS
 # --------------------------------------------------
-# note: make sure to have celery running by running:
+# note: when turning async transmission on
+# make sure to have celery running by running:
 # python manage.py celeryd -E --loglevel=info
 DJP_SEND_ASYNC = False
 
