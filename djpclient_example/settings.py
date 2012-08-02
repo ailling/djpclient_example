@@ -18,7 +18,7 @@ SETTINGS_PATH = os.path.dirname(__file__)
 # --------------------------------------------------
 # note: make sure to have celery running by running:
 # python manage.py celeryd -E --loglevel=info
-DJP_SEND_ASYNC = True
+DJP_SEND_ASYNC = False
 
 # note: celery will display some warnings if you have DEBUG = True; you can ignore these
 
@@ -137,7 +137,7 @@ MIDDLEWARE_CLASSES = (
     
     
     # uncomment this line to profile the entie client application (recommended)
-#    'djpclient.middleware.DJPClientMiddleware',
+    'djpclient_example.djpclient.middleware.DJPClientMiddleware',
     
     # middleware for site-wide caching
 #    'django.middleware.cache.UpdateCacheMiddleware',
