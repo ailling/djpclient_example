@@ -27,7 +27,7 @@ DJP_SEND_ASYNC = False
 # credentials for djangoperformance.com demo account.
 # demo account username / password = demo / demo
 DJP_APP_NAME = 'djpclient_example'
-DJP_APP_USERNAME = 'demo@djangoperformance.com'
+DJP_APP_USERNAME = 'demo'
 DJP_API_KEY = '89ea8b5dc16598ec091994d7a53e7abc1d9ead96'
 
 #for debugging
@@ -138,7 +138,7 @@ MIDDLEWARE_CLASSES = (
     
     
     # uncomment this line to profile the entie client application (recommended)
-    'djpclient_example.djpclient.middleware.DJPClientMiddleware',
+    'djpclient.middleware.DJPClientMiddleware',
     
     # middleware for site-wide caching
 #    'django.middleware.cache.UpdateCacheMiddleware',
@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'djpclient_example.books',
     
-    'djpclient_example.djpclient',
+    'djpclient',
     
     'kombu.transport.django',
     'djcelery',
@@ -215,7 +215,7 @@ LOGGING = {
         },
         'djp_handler': {
             'level': 'INFO',
-            'class': 'djpclient_example.djpclient.log.DJPHandler',
+            'class': 'djpclient.log.DJPHandler',
         }
     },
     'loggers': {

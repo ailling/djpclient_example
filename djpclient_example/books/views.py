@@ -23,7 +23,6 @@ def list_and_add_view(request, template_name, model, formclass):
     else:
         form = formclass(request.POST)
     
-#    logger.info('Created form for template %s', template_name)
     logger.info('Created form')
     
     if not form.is_valid() or request.method == 'GET':
