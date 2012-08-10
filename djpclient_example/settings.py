@@ -19,9 +19,15 @@ SETTINGS_PATH = os.path.dirname(__file__)
 # note: when turning async transmission on
 # make sure to have celery running by running:
 # python manage.py celeryd -E --loglevel=info
-DJP_SEND_ASYNC = False
+DJP_SEND_IN_CELERY_QUEUE = False
 
 # note: celery will display some warnings if you have DEBUG = True; you can ignore these
+
+# if not using celery, data will be transmitted in a separate thread
+# if you desire you can delay the data transmission to ensure your web server has completely
+# returned the request before submitting a POST; this is helpful if you have middleware
+# or any piece of code that modifies the response in an expensive way once the template is rendered
+DJP_SEND_DELAY = 1.0
 
 
 # credentials for djangoperformance.com demo account.
@@ -32,7 +38,6 @@ DJP_API_KEY = '89ea8b5dc16598ec091994d7a53e7abc1d9ead96'
 
 #for debugging
 #DJP_API_KEY = '493b0c8936a282ca1ea1eee47a61d1b80ee7090d'
-
 
 
 DATABASES = {
@@ -215,7 +220,7 @@ LOGGING = {
         },
         'djp_handler': {
             'level': 'INFO',
-            'class': 'djpclient.log.DJPHandler',
+            'class': 'djpclient_example.djpclient.log.DJPHandler',
         }
     },
     'loggers': {
@@ -224,7 +229,6 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True
         },
-        
         'djplogger': {
             'handlers': ['djp_handler'],
             'level': 'INFO',
