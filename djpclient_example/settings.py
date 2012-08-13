@@ -16,7 +16,7 @@ SETTINGS_PATH = os.path.dirname(__file__)
 # --------------------------------------------------
 # PROFILER SETTINGS
 # --------------------------------------------------
-# note: when turning async transmission on
+# note: when turning celery transmission on
 # make sure to have celery running by running:
 # python manage.py celeryd -E --loglevel=info
 DJP_SEND_IN_CELERY_QUEUE = False
@@ -220,7 +220,7 @@ LOGGING = {
         },
         'djp_handler': {
             'level': 'INFO',
-            'class': 'djpclient_example.djpclient.log.DJPHandler',
+            'class': 'djpclient.log.DJPHandler',
         }
     },
     'loggers': {
